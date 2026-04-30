@@ -1,8 +1,8 @@
 ## Escuela Colombiana de Ingeniería
 ## Arquitecturas de Software - ARSW
 
-## Nikolas Martinez Rivera
-## María Belén Quintero
+### Nikolas Martinez Rivera
+### María Belén Quintero
 
 ## Escalamiento en Azure con Maquinas Virtuales, Sacale Sets y Service Plans
 
