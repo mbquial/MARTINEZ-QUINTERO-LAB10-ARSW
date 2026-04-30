@@ -1,9 +1,14 @@
-### Escuela Colombiana de Ingeniería
-### Arquitecturas de Software - ARSW
+## Escuela Colombiana de Ingeniería
+## Arquitecturas de Software - ARSW
+
+## Nikolas Martinez Rivera
+## María Belén Quintero
 
 ## Escalamiento en Azure con Maquinas Virtuales, Sacale Sets y Service Plans
 
-**Creación del Funtion App**
+---
+
+### **Creación del Funtion App**
 Debido a la antigüedad de las imágenes presentadas, fue necesario realizar unos cuantos cambios, dentros de los cuales están:
 
 - La versión 12 del Node.js ya no se encontraba entre las opciones ofrecidas por Azure, por lo tanto, se usó la 20 TLS
@@ -15,8 +20,12 @@ Al aplicar esos pequeños cambios y seguir la guia ofrecida en el repositorio, s
 
 ---
 
-**Azure Functions en VSCode y despliegue de la Function App**
+### **Azure Functions en VSCode y despliegue de la Function App**
+
 Luego de instalar la extensión de Azure Functions, se realizó el despliegue de la función a Azure tal cual como mostraba la guia. Aunque, fue necesario modificar el host.json para que usará una versión compatible con el runtime v4 que usa la Function App.
+
+![Modificación realizada al host.json](/images/modHost.png)
+(Imagen que muestra el cambio realizado al host.json)
 
 ![Evidencia del despliegue exitoso de la función VSCode](/images/despliegue.png)
 (Imagen que evidencia el despliegue exitoso de la función dentro de VSCode)
@@ -26,7 +35,27 @@ Luego de instalar la extensión de Azure Functions, se realizó el despliegue de
 
 ---
 
-**Preguntas**
+### **Pruebas desde Azure**
+
+La prueba usada fue la misma que se encontraba dentro de la guia. Al realizarla se obtuvo un número gigantesco, tal y como se esperaba.
+
+![Prueba en Azure](/images/pruebaAzure.png)
+
+![Resultado prueba en Azure](/images/resultadoAzure.png)
+
+---
+
+### **Pruebas usando Postman y Newman**
+
+#### **Función Fibonacci (iterativa) - 10 peticiones concurrentes**
+
+#### **Función FibonacciMemo (con memoización)**
+
+
+
+---
+
+### **Preguntas**
 
 * ¿Qué es un Azure Function?
 * ¿Qué es serverless?
