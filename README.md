@@ -3,42 +3,28 @@
 
 ## Escalamiento en Azure con Maquinas Virtuales, Sacale Sets y Service Plans
 
-### Dependencias
-* Cree una cuenta gratuita dentro de Azure. Para hacerlo puede guiarse de esta [documentación](https://azure.microsoft.com/es-es/free/students/). Al hacerlo usted contará con $100 USD para gastar durante 12 meses.
-Antes de iniciar con el laboratorio, revise la siguiente documentación sobre las [Azure Functions](https://www.c-sharpcorner.com/article/an-overview-of-azure-functions/)
+**Creación del Funtion App**
+Debido a la antigüedad de las imágenes presentadas, fue necesario realizar unos cuantos cambios, dentros de los cuales están:
 
-### Parte 0 - Entendiendo el escenario de calidad
+- La versión 12 del Node.js ya no se encontraba entre las opciones ofrecidas por Azure, por lo tanto, se usó la 20 TLS
+- La región "East US 2" no permitía la creación del Function App, por lo tanto, se usó "Central US"
 
-Adjunto a este laboratorio usted podrá encontrar una aplicación totalmente desarrollada que tiene como objetivo calcular el enésimo valor de la secuencia de Fibonnaci.
+Al aplicar esos pequeños cambios y seguir la guia ofrecida en el repositorio, se creó el Function App con los siguientes detalles:
 
-**Escalabilidad**
-Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000) de la secuencia de Fibonacci de forma concurrente y el sistema se encuentra bajo condiciones normales de operación, todas las peticiones deben ser respondidas y el consumo de CPU del sistema no puede superar el 70%.
+![Preview de los detalles del Function App](/images/crearFunctionApp.png)
 
-### Escalabilidad Serverless (Functions)
+---
 
-1. Cree una Function App tal cual como se muestra en las  imagenes.
+**Azure Functions en VSCode y despliegue de la Function App**
+Luego de instalar la extensión de Azure Functions, se realizó el despliegue de la función a Azure tal cual como mostraba la guia. Aunque, fue necesario modificar el host.json para que usará una versión compatible con el runtime v4 que usa la Function App.
 
-![](images/part3/part3-function-config.png)
+![Evidencia del despliegue exitoso de la función VSCode](/images/despliegue.png)
+(Imagen que evidencia el despliegue exitoso de la función dentro de VSCode)
 
-![](images/part3/part3-function-configii.png)
+![Evidencia del despliegue exitoso de la función Azure](/images/despliegueAzure.png)
+(Imagen que evidencia el despliegue exitoso de la función dentro de Azure)
 
-2. Instale la extensión de **Azure Functions** para Visual Studio Code.
-
-![](images/part3/part3-install-extension.png)
-
-3. Despliegue la Function de Fibonacci a Azure usando Visual Studio Code. La primera vez que lo haga se le va a pedir autenticarse, siga las instrucciones.
-
-![](images/part3/part3-deploy-function-1.png)
-
-![](images/part3/part3-deploy-function-2.png)
-
-4. Dirijase al portal de Azure y pruebe la function.
-
-![](images/part3/part3-test-function.png)
-
-5. Modifique la coleción de POSTMAN con NEWMAN de tal forma que pueda enviar 10 peticiones concurrentes. Verifique los resultados y presente un informe.
-
-6. Cree una nueva Function que resuleva el problema de Fibonacci pero esta vez utilice un enfoque recursivo con memoization. Pruebe la función varias veces, después no haga nada por al menos 5 minutos. Pruebe la función de nuevo con los valores anteriores. ¿Cuál es el comportamiento?.
+---
 
 **Preguntas**
 
