@@ -97,17 +97,31 @@ A continuación, se presentan las imágenes tomadas de las pruebas como evidenci
 
 #### **Conclusión**
 
-
+El plan Consumption demostró escalar como era esperado para la función iterativa, respondiendo a las 10 peticiones concurrentes sin fallar. Por parte de la memoización, no funcionó de manera tan confiable en el entorno serverless porque Azure puede destruir el contenedor tras inactividad, ya que elimina cualquier estado que se haya guardado en memoria.
 
 ---
 
 ### **Preguntas**
 
 * ¿Qué es un Azure Function?
+
+Es una solución de cómputo serverless que permite ejecutar pequeños fragmentos de código (como lo son las funciones) en la nube, que se activan por eventos como HTTP, timers, colas, entre otros, sin tener que gestionar la infraestructura.
+
 * ¿Qué es serverless?
+
+Es un tipo de modelo en el que el proveedor es quien gestiona automáticamente la infraestructura. El desarrollador nada más se encarga de escribir código. Únicamente se pago por ejecución.
+
 * ¿Qué es el runtime y que implica seleccionarlo al momento de crear el Function App?
+
+El runtime es el entorno de ejecución del código (Node.js 20 TLS, Python, .NET, etc). Es quien determina las versiones de los lenguajes disponibles, las APIs con las que cuente el sistema y la compatibilidad de dependencias. Si se llega a seleccionar un runtime incorrecto, puede hacer que el código se comporte diferente o simplemente no compile.
+
 * ¿Por qué es necesario crear un Storage Account de la mano de un Function App?
+
+Un Function App hace uso de un Storage Account por distintas razones, dentro de las cuales están: almacenar el código desplegado, gestionar el estado de triggers (colas, timers), logs, y una de las más importantes, coordinar el escalado entre instancias. Si no se tiene un Storage Account, la Function App no puede operar.
+
 * ¿Cuáles son los tipos de planes para un Function App?, ¿En qué se diferencias?, mencione ventajas y desventajas de cada uno de ellos.
+
+
+
 * ¿Por qué la memoization falla o no funciona de forma correcta?
 * ¿Cómo funciona el sistema de facturación de las Function App?
-* Informe
