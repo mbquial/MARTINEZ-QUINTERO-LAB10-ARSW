@@ -121,7 +121,19 @@ Un Function App hace uso de un Storage Account por distintas razones, dentro de 
 
 * ¿Cuáles son los tipos de planes para un Function App?, ¿En qué se diferencias?, mencione ventajas y desventajas de cada uno de ellos.
 
+La mejor manera de ver esta información es a través de una tabla:
 
+| Plan | Ventajas | Desventajas | Escalado | Costo |
+|---|---|---|---|---|
+| **Consumo (Consumption)** | Pago por uso: solo pagas por el tiempo de ejecución. Escalado automático según la demanda. | Tiempo de ejecución limitado. Retrasos por cold start cuando las funciones no se han ejecutado recientemente. | Automático basado en eventos. Las instancias se añaden según el número de eventos que activan las funciones. | Pagas solo por el tiempo de ejecución, basado en número de ejecuciones, tiempo y memoria utilizada. |
+| **Premium** | Sin cold start gracias a instancias pre-calentadas. Conectividad a redes virtuales. Mayor control sobre CPU/memoria. | Costo más alto: requiere mantener al menos una instancia siempre activa. | Automático basado en la demanda, con trabajadores pre-calentados para evitar retrasos. | Basado en segundos de núcleo y memoria utilizada. Al menos una instancia debe mantenerse siempre activa. |
+| **Dedicado (App Service)** | Facturación predecible con pago fijo. Ideal para escenarios de larga duración y alta memoria. | No es serverless: no se beneficia del modelo de pago por uso. | Manual o automático mediante reglas de escalado configuradas por el usuario. | Pago fijo similar a otros recursos de App Service, con tarifas predecibles. |
+| **Consumo Flexible (Flex Consumption)** | Escalado horizontal rápido y flexible. Conectividad a redes virtuales y opciones de computación personalizables. | Puede ser más complejo de configurar debido a sus opciones avanzadas. | Rápido y flexible basado en eventos, con decisiones de escalado calculadas por función. | Basado en número de ejecuciones, memoria de instancias activas y costo de instancias siempre listas. |
 
 * ¿Por qué la memoization falla o no funciona de forma correcta?
+
+Por el cómo funciona el plan Consumption, ya que Azure puede destruir el contenedor si ve que hay inactividad de aproximadamente 5 minutos. La variable memo vive en memoria del proceso, entonces cuando el contenedor se recicla, la caché se pierde completamente (es lo que se menciona como "cold start").
+
 * ¿Cómo funciona el sistema de facturación de las Function App?
+
+En el plan Consumption se cobra por el número de ejecuciones (aunque el primer millón gratis/mes) + tiempo de ejecución en GB-segundos (o sea, memoria usada x duración). Si no se ejecuta, simplemente no se cobra.
